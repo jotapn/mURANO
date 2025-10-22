@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Murano — Produção Audiovisual</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400;6..96,500;6..96,600;6..96,700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#F2F2F5;
+      --fg:#1B4440;
+      --sub:#253D36;
+      --line:rgba(37,61,54,.2);
+      --maxw:1200px;
+      --display:'Bodoni Moda', serif;
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;height:100%;font-family:system-ui,-apple-system,Segoe UI,Roboto,Inter,Helvetica,Arial,sans-serif;color:var(--fg);background:var(--bg)}
+    a{color:inherit;text-decoration:none}
+    /* HEADER */
+    /* Tipografia display (estilo PP Editorial New) aplicada a títulos, navegação e tagline */
+    h1,h2,.tagline,.brand{font-family:var(--display)}
+    header{position:sticky;top:0;z-index:10;background:var(--bg);border-bottom:1px solid var(--line)}
+    .header-inner{max-width:var(--maxw);margin:0 auto;padding:18px 24px;display:flex;align-items:center;gap:16px}
+    .brand{min-width:200px;display:flex;align-items:center;gap:10px;font-weight:700;letter-spacing:.16em}
+    .brand-img{height:28px;width:auto;display:block;object-fit:contain}
+    .center-icon{flex:1;display:flex;justify-content:center}
+    .center-icon img{height:22px;width:auto;display:block;object-fit:contain}
+    nav{min-width:280px;margin-left:auto;display:flex;gap:20px;justify-content:flex-end}
+    nav a{font-size:15px;letter-spacing:.08em;text-transform:uppercase;opacity:.95;color:var(--fg);padding:10px 8px;border-radius:8px}
+    nav a:focus-visible{outline:2px dotted var(--fg);outline-offset:3px}
+    nav a:hover{opacity:1; background:rgba(27,68,64,.06)}
+    nav a:hover{opacity:1}
+    @media (max-width:760px){
+      .center-icon{display:none}
+      nav{gap:10px}
+      .brand{min-width:auto}
+      .hero-frame{height:55vh}
+    }
+
+    /* HERO - CSS ONLY SLIDESHOW (até 6 imagens) */
+    .hero{max-width:var(--maxw);margin:24px auto;padding:0 24px}
+    .hero-frame{position:relative;height:70vh;min-height:420px;max-height:82vh;overflow:hidden;box-shadow:0 0 0 12px var(--bg) inset}
+    .slides{position:absolute;inset:0}
+    .slide{position:absolute;inset:0;opacity:0;background-position:center;background-size:cover;animation:fade 40s infinite}
+    .slide:nth-child(1){animation-delay:0s}
+    .slide:nth-child(2){animation-delay:8s}
+    .slide:nth-child(3){animation-delay:16s}
+    .slide:nth-child(4){animation-delay:24s}
+    .slide:nth-child(5){animation-delay:32s}
+    .slide:nth-child(6){animation-delay:40s}
+    @keyframes fade{0%{opacity:0} 6%{opacity:1} 22%{opacity:1} 28%{opacity:0} 100%{opacity:0}}
+    @media (prefers-reduced-motion: reduce){
+      .slide{animation:none}
+      .slide{opacity:0}
+      .slide:nth-child(1){opacity:1}
+    }
+    /* TAGLINE abaixo do hero */
+    .tagline{max-width:var(--maxw);margin:20px auto 10px;padding:0 24px;text-align:center;letter-spacing:.12em;text-transform:uppercase;font-size:14px}
+
+    /* CLIENTES - GALERIA */
+    .clients{max-width:var(--maxw);margin:18px auto 0;padding:0 24px}
+    .clients-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:22px}
+    .client{display:flex;flex-direction:column;gap:10px}
+    .client .name{font-size:14px;letter-spacing:.02em;opacity:.95}
+    .client .thumb{width:100%;aspect-ratio:4/5;object-fit:cover;border:1px solid var(--line)}
+    @media (max-width:1100px){.clients-grid{grid-template-columns:repeat(3,1fr)}}
+    @media (max-width:700px){.clients-grid{grid-template-columns:repeat(2,1fr)}}
+    @media (max-width:480px){.clients-grid{grid-template-columns:1fr}}
+
+    /* DIVISOR */
+    .divider{max-width:var(--maxw);margin:26px auto;height:1px;background:var(--fg);opacity:.35}
+
+    /* TESTEMUNHOS */
+    .testimonials{max-width:var(--maxw);margin:0 auto;padding:10px 24px 0}
+    .testi-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:22px}
+    .testi p{color:var(--sub);font-size:16px;line-height:1.75}
+    .testi .author{margin-top:10px;font-weight:600}
+    @media (max-width:1100px){.testi-grid{grid-template-columns:repeat(3,1fr)}}
+    @media (max-width:700px){.testi-grid{grid-template-columns:repeat(2,1fr)}}
+    @media (max-width:480px){.testi-grid{grid-template-columns:1fr}}
+
+
+    /* PAGE SECTIONS */
+    section{max-width:var(--maxw);margin:0 auto;padding:56px 24px}
+    h2{font-size:28px;margin:0 0 12px}
+    p{line-height:1.7;color:var(--sub);margin:0 0 10px}
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+    .card{border:1px solid var(--line);border-radius:14px;padding:18px}
+    .muted{color:var(--sub)}
+    @media (max-width:920px){.grid{grid-template-columns:1fr 1fr}}
+    @media (max-width:640px){.grid{grid-template-columns:1fr}}
+
+    /* SIMPLE QUOTE FORM */
+    form{display:grid;gap:12px;max-width:680px}
+    input,textarea,button{font:inherit}
+    input,textarea{padding:14px 16px;border:1px solid var(--line);border-radius:12px}
+    button{cursor:pointer;border:1px solid var(--fg);background:transparent;padding:14px 18px;border-radius:12px;min-height:44px;font-weight:600}
+
+    footer{border-top:1px solid var(--line);padding:28px 24px;color:var(--sub);background:var(--bg)}
+  </style>
+</head>
+<body>
+  <header id="inicio">
+    <div class="header-inner">
+      <div class="brand">
+        <img class="brand-img" src="https://images.unsplash.com/photo-1761097036573-7e882cec5699?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=3245" alt="Logo Murano"/>
+      </div>
+      <div class="center-icon"><img src="https://images.unsplash.com/vector-1761096982411-b1d474829b83?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1624" alt="Ícone"/></div>
+      <nav>
+        <a href="#inicio">Início</a>
+        <a href="#sobre">Sobre</a>
+        <a href="#portfolio">Portfólio</a>
+        <a href="#orcamento">Orçamento</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO / SLIDESHOW: troque as URLs abaixo pelas suas (máx. 6) -->
+    <div class="hero" aria-label="Galeria de destaque">
+      <div class="hero-frame">
+        <div class="slide" style="background-image:url('https://images.unsplash.com/photo-1761096484892-95f1fc6098a2?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1920');"></div>
+        <div class="slide" style="background-image:url('https://images.unsplash.com/photo-1761096484897-5c6864588174?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1920');"></div>
+        <div class="slide" style="background-image:url('https://images.unsplash.com/photo-1761096485005-5e7356c0b5b1?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1920');"></div>
+        <div class="slide" style="background-image:url('https://images.unsplash.com/photo-1761096485184-673b662c2954?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1920');"></div>
+      </div>
+    </div>
+      <p class="tagline">O OLHAR QUE MOLDA O MURANO</p>
+
+    <!-- Lista de fotos dos clientes (embaralha ao carregar) -->
+    <section class="clients" id="clientes">
+      <div class="clients-grid" data-shuffle>
+        <div class="client"><span class="name">Quadro Sol</span><img loading="lazy" class="thumb" alt="Quadro Sol" src="https://images.unsplash.com/photo-1761096484883-74f1b19d6ae6?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=928"/></div>
+        <div class="client"><span class="name">Dantas e Napoleao Arquitetura</span><img loading="lazy" class="thumb" alt="Dantas e Napoleao Arquitetura" src="https://images.unsplash.com/photo-1761096484896-775cfcab2eb0?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=774"/></div>
+        <div class="client"><span class="name">Iver Bar</span><img loading="lazy" class="thumb" alt="Iver Bar" src="https://images.unsplash.com/photo-1761096485292-84ff3a1b67d0?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=774"/></div>
+        <div class="client"><span class="name">Be Mari</span><img loading="lazy" class="thumb" alt="Be Mari" src="https://images.unsplash.com/photo-1761096484920-fb36476d0d09?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=928"/></div>
+        <div class="client"><span class="name">Lilia Casa</span><img loading="lazy" class="thumb" alt="Lilia Casa" src="https://images.unsplash.com/photo-1761096484897-5c6864588174?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1740"/></div>
+      </div>
+    </section>
+
+    <div class="divider" role="separator" aria-hidden="true"></div>
+
+    <!-- Relatos de clientes -->
+    <section class="testimonials" id="relatos">
+      <div class="testi-grid">
+        <div class="testi"><p>O serviço de Catálogo Fashion é voltado para marcas de moda que desejam apresentar suas coleções de maneira atraente e profissional. A produção inclui sessões de fotos com modelos, destacando as peças de vestuário ou acessórios em um ambiente de estúdio.</p><div class="author">Alana Saunders</div></div>
+        <div class="testi"><p>O serviço de Catálogo Fashion é voltado para marcas de moda que desejam apresentar suas coleções de maneira atraente e profissional. A produção inclui sessões de fotos com modelos, destacando as peças de vestuário ou acessórios em um ambiente de estúdio.</p><div class="author">Michaela Dantas</div></div>
+        <div class="testi"><p>O serviço de Catálogo Fashion é voltado para marcas de moda que desejam apresentar suas coleções de maneira atraente e profissional. A produção inclui sessões de fotos com modelos, destacando as peças de vestuário ou acessórios em um ambiente de estúdio.</p><div class="author">Bizet Castro</div></div>
+        <div class="testi"><p>O serviço de Catálogo Fashion é voltado para marcas de moda que desejam apresentar suas coleções de maneira atraente e profissional. A produção inclui sessões de fotos com modelos, destacando as peças de vestuário ou acessórios em um ambiente de estúdio.</p><div class="author">Mariana Matos</div></div>
+        <div class="testi"><p>O serviço de Catálogo Fashion é voltado para marcas de moda que desejam apresentar suas coleções de maneira atraente e profissional. A produção inclui sessões de fotos com modelos, destacando as peças de vestuário ou acessórios em um ambiente de estúdio.</p><div class="author">Tâmara Kelly</div></div>
+      </div>
+    </section>
+
+    <section id="sobre">
+      <h2>Sobre</h2>
+      <p>Somos um estúdio de produção audiovisual minimalista. Roteiro, captação e pós — entregues com rigor técnico e estética limpa.</p>
+      <p class="muted">Atendemos marcas e criadores em filmes publicitários, institucionais, videoclipes e conteúdo social.</p>
+    </section>
+
+    <section id="portfolio">
+      <h2>Portfólio</h2>
+      <div class="grid">
+        <div class="card"><strong>Campanha — Horizonte</strong><p class="muted">Direção e pós-produção para lançamento de produto.</p></div>
+        <div class="card"><strong>Institucional — Essência</strong><p class="muted">Documental leve com entrevistas e b-roll.</p></div>
+        <div class="card"><strong>Clipe — Neon</strong><p class="muted">Estética high-contrast e motion sutil.</p></div>
+      </div>
+    </section>
+
+    <section id="orcamento">
+      <h2>Orçamento</h2>
+      <p class="muted">Envie um briefing rápido e retornamos com uma proposta.</p>
+      <form>
+        <input type="text" name="nome" placeholder="Seu nome" required />
+        <input type="email" name="email" placeholder="Seu e-mail" required />
+        <textarea name="mensagem" rows="5" placeholder="Conte sobre o projeto" required></textarea>
+        <button type="submit">Solicitar orçamento</button>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    <div style="max-width:var(--maxw);margin:0 auto;display:flex;justify-content:space-between;gap:16px">
+      <span>© <span id="year"></span> Murano Audiovisual</span>
+      <span class="muted">Minimal film & photo</span>
+    </div>
+  </footer>
+
+  <script>
+    // Só para atualizar o ano no rodapé (JS opcional; pode remover se quiser fixo)
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Embaralhar a grade de clientes em cada visita/carregamento
+    (function(){
+      const grid = document.querySelector('[data-shuffle]');
+      if(!grid) return;
+      const cards = Array.from(grid.children);
+      for(let i = cards.length - 1; i > 0; i--){
+        const j = Math.floor(Math.random() * (i + 1));
+        grid.appendChild(cards[j]);
+        cards.splice(j,1);
+      }
+    })();
+  </script>
+</body>
+</html>
